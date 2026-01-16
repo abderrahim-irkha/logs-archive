@@ -6,6 +6,7 @@ v_datetime="$v_date"_"$v_time"
 
 if [ $1 = 0 ]; then
 	echo "Please provide the logs directory as an argument!";
+	break 2
 else
 	arg=$1
 fi
