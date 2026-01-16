@@ -1,0 +1,13 @@
+#!/bin/bash
+
+v_time=$(LC_ALL=C | timedatectl | grep "Local" | awk -F " " '{print $5}' | awk -F ":" '{print $1$2$3}')
+v_date=$(LC_ALL=C | timedatectl | grep "Local" | awk -F " " '{print $4}' | awk -F "-" '{print $1$2$3}')
+v_datetime="$v_date"_"$v_time"
+
+if [ $1 = 0 ]; then
+	echo "Please provide the logs directory as an argument!";
+else
+	arg=$1
+fi
+
+tar -czvf logs_archive_$v_datetime.tar.gz $arg
